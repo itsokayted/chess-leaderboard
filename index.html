@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1>Chess Leaderboard</h1>
+  <nav id="tabs"></nav>
   <p id="status">Loading…</p>
 
   <table>
@@ -21,26 +22,6 @@
     <tbody id="players"></tbody>
   </table>
 
-  <script>
-    fetch("https://api.chess.com/pub/leaderboards")
-      .then(response => response.json())
-      .then(data => {
-        const tbody = document.getElementById("players");
-        data.live_blitz.forEach(player => {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${player.rank}</td>
-            <td><img src="${player.avatar}" alt="">${player.username}</td>
-            <td class="rating">${player.score}</td>
-            <td>${player.win_count} / ${player.loss_count} / ${player.draw_count}</td>
-          `;
-          tbody.appendChild(row);
-        });
-        document.getElementById("status").textContent = "Top 50 Blitz players";
-      })
-      .catch(() => {
-        document.getElementById("status").textContent = "Couldn't load data.";
-      });
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
