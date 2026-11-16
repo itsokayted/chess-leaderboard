@@ -1,0 +1,38 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #1e1e1e;
+  color: #eee;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  color: #999;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+td img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.rating {
+  font-weight: bold;
+  color: #81b64c;
+}

@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Chess Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Chess Leaderboard</h1>
   <p id="status">Loading…</p>
-  <ol id="players"></ol>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th>Rating</th>
+        <th>W / L / D</th>
+      </tr>
+    </thead>
+    <tbody id="players"></tbody>
+  </table>
 
   <script>
     fetch("https://api.chess.com/pub/leaderboards")
       .then(response => response.json())
       .then(data => {
-        const list = document.getElementById("players");
+        const tbody = document.getElementById("players");
         data.live_blitz.forEach(player => {
-          const item = document.createElement("li");
-          item.textContent = `${player.username} — ${player.score}`;
-          list.appendChild(item);
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${player.rank}</td>
+            <td><img src="${player.avatar}" alt="">${player.username}</td>
+            <td class="rating">${player.score}</td>
+            <td>${player.win_count} / ${player.loss_count} / ${player.draw_count}</td>
+          `;
+          tbody.appendChild(row);
         });
         document.getElementById("status").textContent = "Top 50 Blitz players";
       })
