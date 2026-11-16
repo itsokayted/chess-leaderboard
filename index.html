@@ -6,6 +6,24 @@
 </head>
 <body>
   <h1>Chess Leaderboard</h1>
-  <p>Coming soon.</p>
+  <p id="status">Loading…</p>
+  <ol id="players"></ol>
+
+  <script>
+    fetch("https://api.chess.com/pub/leaderboards")
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById("players");
+        data.live_blitz.forEach(player => {
+          const item = document.createElement("li");
+          item.textContent = `${player.username} — ${player.score}`;
+          list.appendChild(item);
+        });
+        document.getElementById("status").textContent = "Top 50 Blitz players";
+      })
+      .catch(() => {
+        document.getElementById("status").textContent = "Couldn't load data.";
+      });
+  </script>
 </body>
 </html>
