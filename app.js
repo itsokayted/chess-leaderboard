@@ -15,7 +15,7 @@ function showCategory(key) {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${player.rank}</td>
-      <td><img src="${player.avatar}" alt="">${player.username}</td>
+      <td>${player.avatar ? `<img src="${player.avatar}" alt="">` : ""}${player.username}</td>
       <td class="rating">${player.score}</td>
       <td>${player.win_count} / ${player.loss_count} / ${player.draw_count}</td>
     `;

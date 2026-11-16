@@ -52,3 +52,7 @@ td img {
   color: #111;
   border-color: #81b64c;
 }
+
+#tabs {
+  margin-bottom: 16px;
+}
